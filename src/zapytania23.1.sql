@@ -73,7 +73,7 @@ CREATE TABLE employee (
 -- Dodaje dane testowe (w taki sposób, aby powstały pomiędzy nimi sensowne powiązania)
 
 insert into title 
-	(name, title, payment)
+	(title_name, desc_title, payment)
 values
 	('kierownik', 'kierowanie zespołem', 5000),
     ('magazynier', 'praca na magazynie',3000),
