@@ -35,8 +35,7 @@ select * from employees where year(curdate())-year(birth_date)>=30;
 
 -- Zwiększa wypłatę pracowników na wybranym stanowisku o 10%
 
--- NIE DZIAŁA - nie wiem czemu
-update employees set payment = ((select employees.payment where position = 'kadrowa') * 1.1) ; 
+update employees set payment = payment * 1.1 where position = 'kadrowa'; 
 
 -- Pobiera najmłodszego pracowników (uwzględnij przypadek, że może być kilku urodzonych tego samego dnia)
 
@@ -74,7 +73,7 @@ CREATE TABLE employee (
 -- Dodaje dane testowe (w taki sposób, aby powstały pomiędzy nimi sensowne powiązania)
 
 insert into title 
-	(title_name, desc_title, payment)
+	(name, title, payment)
 values
 	('kierownik', 'kierowanie zespołem', 5000),
     ('magazynier', 'praca na magazynie',3000),
@@ -107,7 +106,7 @@ from
     
 -- Oblicza sumę wypłat dla wszystkich pracowników w firmie
 
--- BRAK - nie wiem jak to zrobić
+select sum(payment) From employee join title on employee.title_id = title.id;
 
 -- Pobiera pracowników mieszkających w lokalizacji z kodem pocztowym 90210 (albo innym, który będzie miał sens dla Twoich danych testowych)
 
